@@ -48,7 +48,7 @@ if($result = $conn->query($sql)){
             echo "<td>". $row["kolvo"]. "</td>";
             echo "<td><form action='dobavlKorz.php' method='POST'>
             <input type='hidden' name='id' value='". $row["id"]. "' />
-            <input style='border: none; cursor: pointer; background-color: gray; color: white; padding: 5px; border-radius: 5px;  text-decoration: none;' type='number' name='quantity' min='1' required>
+            <input style='border: none; cursor: pointer; background-color: gray; color: white; padding: 5px; border-radius: 5px;  text-decoration: none;' type='number' name='quantity' min='1' max='". $row["kolvo"]. "' required>
             <input style='border: none; cursor: pointer; background-color: gray; color: white; padding: 5px; border-radius: 5px;  text-decoration: none;' type='submit' value='Добавить в корзину'>
         </form></td>";
         

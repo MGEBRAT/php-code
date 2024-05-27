@@ -10,13 +10,13 @@
 <?php
 session_start();
 
-// Connect to the database
+
 $conn = new mysqli("localhost", "root", "", "market");
 if ($conn->connect_error) {
     die("Ошибка: ". $conn->connect_error);
 }
 
-// Retrieve the products from the database
+
 $cartItems = [];
 if (isset($_SESSION['cart'])) {
     $productIds = implode(',', array_keys($_SESSION['cart']));
@@ -32,7 +32,7 @@ if (isset($_SESSION['cart'])) {
     }
 }
 
-// Display the shopping cart
+
 echo "<h2>Корзина</h2>";
 echo "<table><tr><th>Название</th><th>цена</th><th>штук </th></tr>";
 foreach ($cartItems as $productId => $item) {
@@ -43,10 +43,16 @@ foreach ($cartItems as $productId => $item) {
     echo "</tr>";
 }
 echo "</table>";
-
-
+if (!empty($cartItems)) {
+    echo "<div style='margin-top: 20px;'>
+    <a style='border: none; cursor: pointer; background-color: gray; color: white; padding: 5px; border-radius: 5px;  text-decoration: none;'  href='shop.php'>Оформление заказа</a>
+    </div>";
+}
+echo "<div style='margin-top: 20px;'>
+    <a style='border: none; cursor: pointer; background-color: gray; color: white; padding: 5px; border-radius: 5px;  text-decoration: none;'  href='main.php'>На главную</a>
+    </div>";
 $conn->close();
 ?>
-<a style='border: none; cursor: pointer; background-color: gray; color: white; padding: 5px; border-radius: 5px;  text-decoration: none;'  href="main.php">На главную</a>
+
 </body>
 </html>

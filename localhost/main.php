@@ -8,16 +8,15 @@
 <body>
 <?php
 session_start();        
-if (isset($_SESSION["name"] )) {
-    $userName = $_SESSION["name"];
-    echo "Привет, ". $userName. "! Добро пожаловать на наш сайт.";
-} else if (isset($_SESSION["username"])) {
-    $username = $_SESSION["username"];
-    echo "Привет, $username!";
+$username = isset($_SESSION["name"])? $_SESSION["name"] : (isset($_SESSION["username"])? $_SESSION["username"] : null);
+
+if ($username) {
+    echo "Привет, $username! Добро пожаловать на наш сайт.";
 } else {
     echo "Пожалуйста, войдите в систему.";
 }
 ?>
+
 
     <h1 style='display:flex; justify-content: center;' >Главная</h1>
     <div style='margin-top: 20px; display: flex; gap: 20px; '>
