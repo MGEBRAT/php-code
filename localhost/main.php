@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
     <title>Главная</title>
 </head>
 <body>
 <?php
 session_start();        
-if (isset($_SESSION["name"] )) {
-    $userName = $_SESSION["name"];
-    echo "Привет, ". $userName. "! Добро пожаловать на наш сайт.";
-} else if (isset($_SESSION["username"])) {
-    $username = $_SESSION["username"];
-    echo "Привет, $username!";
+$username = isset($_SESSION["name"])? $_SESSION["name"] : (isset($_SESSION["username"])? $_SESSION["username"] : null);
+
+if ($username) {
+    echo "Привет, $username! Добро пожаловать на наш сайт.";
 } else {
     echo "Пожалуйста, войдите в систему.";
 }
 ?>
+
 
     <h1 style='display:flex; justify-content: center;' >Главная</h1>
     <div style='margin-top: 20px; display: flex; gap: 20px; '>
@@ -29,6 +29,15 @@ if (isset($_SESSION["name"] )) {
             text-decoration: none;' 
             href='http://localhost/search.php'>
             Продукты
+        </a>
+        <a style=' 
+            background-color: gray; 
+            color: white; 
+            padding: 5px; 
+            border-radius: 5px; 
+            text-decoration: none;' 
+            href='zakazproduct.php'>
+            история покупок
         </a>
         <a style=' 
             background-color: gray; 
@@ -59,5 +68,26 @@ if (isset($_SESSION["name"] )) {
             </button>
         </form>
     </div>
+
+
+
+    <div class="container">
+    <div >
+        <div class="smesharic">
+            <div class="head"></div>
+            <div class="nogi">
+                <div class="left-noga"></div>
+                <div class="right-noga"></div>
+            </div>
+            
+        </div>
+        <div class="pol">
+            <div class="kubic"></div>
+        </div>
+    </div>
+</div>
+
+
+
 </body>
 </html>

@@ -11,6 +11,7 @@
         <a  href='index.php' style='background-color: gray; color: white; padding: 5px; border-radius: 5px;  text-decoration: none;'>Продукты и категории</a>
         <a  href='indexCheck.php' style='background-color: gray; color: white; padding: 5px; border-radius: 5px;  text-decoration: none;'>чеки и люди</a>
         <a  href='indexPost.php' style='background-color: gray; color: white; padding: 5px; border-radius: 5px;  text-decoration: none;'>поставщики и поставки</a>
+        <a  href='indexshop.php' style='background-color: gray; color: white; padding: 5px; border-radius: 5px;  text-decoration: none;'>Шоппинги</a>
     </div>
 </body>
 </html>

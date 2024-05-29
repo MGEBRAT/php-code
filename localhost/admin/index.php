@@ -3,6 +3,7 @@
 <head>
 <title>магтерочка</title>
 <meta charset="utf-8" />
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 <h2>Продукты</h2>
@@ -67,6 +68,19 @@ if($result = $conn->query($sql)){
 }
 $conn->close();
 ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 </body>
 </html>
