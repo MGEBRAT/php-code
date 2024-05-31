@@ -57,6 +57,16 @@ if ($username) {
             href='http://localhost/korzina.php'>
             ваша карзина
         </a>
+        <a style=' 
+            background-color: gray; 
+            color: white; 
+            padding: 5px; 
+            border-radius: 5px; 
+            text-decoration: none;' 
+            href='dobavlIzbr.php'>
+            ваши избранные
+        </a>
+        
         <form action="logout.php" method="post">
             <button style=' 
                 background-color: gray; 

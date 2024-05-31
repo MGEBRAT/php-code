@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Май 27 2024 г., 23:32
+-- Время создания: Май 31 2024 г., 10:45
 -- Версия сервера: 8.0.30
 -- Версия PHP: 8.1.9
 
@@ -73,7 +73,32 @@ INSERT INTO `chek` (`date`, `id_user`, `number_check`, `operation_check`, `name_
 ('2024-05-22', 2, 23142, 1, 'цццццц', 2147483642, 2147483641, 'карта', 2),
 ('2024-05-27', 1, 23143, 3, 'Чек', 123456, 123456, 'Наличка', 4),
 ('2024-05-27', 1, 23143, 3, 'Чек', 123456, 123456, 'Наличка', 5),
-('2024-05-27', 7, 23144, 4, 'Чек', 123456, 123456, 'Наличка', 6);
+('2024-05-27', 7, 23144, 4, 'Чек', 123456, 123456, 'Наличка', 6),
+('2024-05-28', 11, 23145, 5, 'Чек', 123456, 123456, 'Наличка', 7),
+('2024-05-29', 5, 23146, 6, 'Чек', 123456, 123456, 'Наличка', 8),
+('2024-05-31', 5, 23147, 7, 'Чек', 123456, 123456, 'Наличка', 9);
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `favorites`
+--
+
+CREATE TABLE `favorites` (
+  `id` int NOT NULL,
+  `product_id` int NOT NULL,
+  `user_id` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Дамп данных таблицы `favorites`
+--
+
+INSERT INTO `favorites` (`id`, `product_id`, `user_id`) VALUES
+(1, 11, 5),
+(2, 11, 5),
+(3, 11, 5),
+(4, 22, 5);
 
 -- --------------------------------------------------------
 
@@ -192,7 +217,10 @@ INSERT INTO `Shopping` (`id`, `UserId`, `ProductId`, `kolvo`, `priezd`, `address
 (26, 1, 12, 3, 0, 'г волгоград хорошш', '21:04:23.000000'),
 (27, 1, 12, 3, 0, 'не уважаю ппх', '21:04:23.000000'),
 (28, 1, 12, 3, 0, 'г волгоград хорошш', '21:04:23.000000'),
-(29, 7, 12, 20, 0, 'домик на берегу моря', '12:04:23.000000');
+(29, 7, 12, 20, 0, 'домик на берегу моря', '12:04:23.000000'),
+(30, 11, 11, 112, 0, 'пыть-ях', '17:00:00.000000'),
+(31, 5, 13, 2, 0, 'волжский', '17:00:00.000000'),
+(32, 5, 11, 2, 0, 'ЦУ', '21:04:23.000000');
 
 -- --------------------------------------------------------
 
@@ -224,7 +252,8 @@ INSERT INTO `Users` (`id`, `UserName`, `Email`, `password`) VALUES
 (12, 'olegы', '12322@gmail.com', 'й'),
 (13, 'olegы', 'olegaa@gmail.com', '4'),
 (14, 'olegы', 'olegaa@gmail.com', '4'),
-(15, 'olegыwqe', 'olegaa@gmail.com', '2');
+(15, 'olegыwqe', 'olegaa@gmail.com', '2'),
+(16, 'глееень', 'glen@gmail.glen', '123');
 
 --
 -- Индексы сохранённых таблиц
@@ -242,6 +271,14 @@ ALTER TABLE `Categories`
 ALTER TABLE `chek`
   ADD PRIMARY KEY (`id`),
   ADD KEY `chek_ibfk_1` (`id_user`);
+
+--
+-- Индексы таблицы `favorites`
+--
+ALTER TABLE `favorites`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `product_id` (`product_id`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Индексы таблицы `Postavka`
@@ -292,7 +329,13 @@ ALTER TABLE `Categories`
 -- AUTO_INCREMENT для таблицы `chek`
 --
 ALTER TABLE `chek`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT для таблицы `favorites`
+--
+ALTER TABLE `favorites`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT для таблицы `Postavka`
@@ -316,13 +359,13 @@ ALTER TABLE `Products`
 -- AUTO_INCREMENT для таблицы `Shopping`
 --
 ALTER TABLE `Shopping`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT для таблицы `Users`
 --
 ALTER TABLE `Users`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- Ограничения внешнего ключа сохраненных таблиц
@@ -333,6 +376,13 @@ ALTER TABLE `Users`
 --
 ALTER TABLE `chek`
   ADD CONSTRAINT `chek_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `Shopping` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+--
+-- Ограничения внешнего ключа таблицы `favorites`
+--
+ALTER TABLE `favorites`
+  ADD CONSTRAINT `favorites_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `Products` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  ADD CONSTRAINT `favorites_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `Users` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
 -- Ограничения внешнего ключа таблицы `Privoz`
